@@ -1,0 +1,45 @@
+Service 
+
+	Int UserCreate(userDomain)
+	Context context  = new Data.Context()
+	try{
+	context.beginTransaction
+	context.command = userDOmain.Save(context)
+	context.command.executeScalar;
+	context.closeTransaction
+	}
+	catch
+	{
+	context.rollback
+	}
+
+
+
+
+
+	Class userDomain 
+		void Save(context)
+			PopulateUserDataClass
+				get userCreatesql
+			PopulateUserEmailClass
+				get userEmailsql			
+
+			context.Command += all SQL
+			
+			NOTE: sql must be able to return userID
+
+DECLARE @userId Int
+
+INSERT into User...
+Set @userID = @@IDENTITY OR SCOPE_IDENTITY()
+
+Insert Into userEmail
+
+
+Select @userID
+	
+
+
+
+
+	

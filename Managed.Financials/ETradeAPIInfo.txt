@@ -1,0 +1,168 @@
+From: JUSTIN SMITS
+Sent: 09/16/2011 09:43 AM
+Subject: Technical Issues
+Topic: E*TRADE API
+Account: XXXX-0541
+Reference Number: 1645967
+
+Message:
+
+Dear Mr. Smits,
+
+This message is regarding accessing and creating your own API for your E*TRADE brokerage accounts.
+
+The technical documents are accessible here https://content.etrade.com/etrade/estation/pdf/API_Technical_Documentation.pdf
+
+The API uses Oauth revision 1.0a, there are some code samples here http://oauth.net/code/
+
+oauth_consumer_key: df0a93ba44c02fc0dcf29518d19626b7 
+consumer_secret: 274f3141e05efb5bb18f8f4a6c6d18b2
+
+Please note the keys are for the sandbox environment which returns preformatted results; for the production environment, in order to get real market data and place orders, the developer license agreement will need to be signed.
+
+The Developer License Agreement (https://content.etrade.com/etrade/estation/pdf/APIDeveloperAgreement.pdf) will require a physical signature and needs to be signed and mailed here:
+
+E*TRADE C/O API DEPARTMENT
+4500 Bohannon Dr
+Menlo Park, CA 94025
+
+Step 1. Requesting for Request Token. 
+
+Request Token url: https://etws.etrade.com/oauth/request_token 
+
+Parameters required in Header: 
+1. oauth_callback 
+2. oauth_signature 
+3. oauth_nonce 
+4. oauth_signature_method (only HMAC_SHA1 is supported) 
+5. oauth_consumer_key 
+6. oauth_timestamp (in seconds) 
+
+Note: oauth_callback, oauth_nonce, oauth_signature_method, oauth_consumer_key, oauth_timestamp must be encoded as mentioned in the oauth spec http://oauth.net/core/1.0a/#encoding_parameters and must be signed with HMAC_SHA1 as defined in http://oauth.net/core/1.0a/#signing_process and that value will be oauth_signature
+
+
+Sample HTTP Authorization Header: 
+
+Header Name: Authorization 
+Header Value: OAuth realm="",oauth_callback="oob",oauth_signature="FjoSQaFDKEDK1FJazlY3xArNflk%3D",oauth_nonce="LTg2ODUzOTQ5MTEzMTY3MzQwMzE%3D",oauth_signature_method="HMAC-SHA1",oauth_consumer_key="282683cc9e4b8fc81dea6bc687d46758",oauth_timestamp="1273254425"
+
+
+Sample Response: 
+oauth_token=%2FiQRgQCRGPo7Xdk6G8QDSEzX0Jsy6sKNcULcDavAGgU%3D&oauth_token_secret=%2FrC9scEpzcwSEMy4vE7nodSzPLqfRINnTNY4voczyFM%3D&oauth_callback_confirmed=true
+
+Step 2. Authorizing the Consumer Application 
+
+Authorization url: https://us.etrade.com/e/t/etws/authorize?key=[oauth_consumer_key]&token=[request_token]
+
+Step 3. Requesting for Access Token 
+
+Access Token url: https://etws.etrade.com/oauth/access_token 
+
+Parameters required in Header: 
+1. oauth_consumer_key 
+2. oauth_timestamp (in seconds) 
+3. oauth_nonce 
+4. oauth_signature_method (only HMAC_SHA1 is supported) 
+5. oauth_token (request token which was given as part of Step 1.) 
+6. oauth_verifier (5 digit verification code which was given as part of authorization process Step2.) 
+7. oauth_signature 
+
+Note: oauth_consumer_key, oauth_timestamp, oauth_nonce, oauth_signature_method, oauth_token, oauth_verifier must be encoded as mentioned in the oauth spec http://oauth.net/core/1.0a/#encoding_parameters and must be signed with HMAC_SHA1 as defined in http://oauth.net/core/1.0a/#signing_process and that value will be oauth_signature
+
+
+Sample HTTP Authorization Header: 
+
+Header Name: Authorization 
+Header Value: OAuth realm="",oauth_verifier="ABCDE",oauth_signature="FjoSQaFDKEDK1FJazlY3xArNflk%3D",oauth_nonce="LTg2ODUzOTQ5MTEzMTY3MzQwMzE%3D",oauth_signature_method="HMAC-SHA1",oauth_consumer_key="282683cc9e4b8fc81dea6bc687d46758",oauth_token="%2FiQRgQCRGPo7Xdk6G8QDSEzX0Jsy6sKNcULcDavAGgU%3D",oauth_timestamp="1273254425"
+
+
+Sample Response: 
+oauth_token=%2KMqRgRCGGPo7Xdk6G8QDSEzX0Jsy6sKNcULcDavAGgZ%3D&oauth_token_secret=%2QpD9uiFpzcwSEMy4vE7nodSzPLqfRINnTNY4voczyJN%3D
+
+Step 4. Accessing Protected Resources 
+
+AccountList Resource url: https://etwssandbox.etrade.com/accounts/sandbox/rest/accountlist
+
+Parameters required in Header: 
+1. oauth_consumer_key 
+2. oauth_timestamp (in seconds) 
+3. oauth_nonce 
+4. oauth_signature_method (only HMAC_SHA1 is supported) 
+5. oauth_token (Token which was given as part of Step 3) 
+6. oauth_signature 
+
+Note: oauth_consumer_key, oauth_timestamp, oauth_nonce, oauth_signature_method, oauth_token must be encoded as mentioned in the oauth spec http://oauth.net/core/1.0a/#encoding_parameters and must be signed with HMAC_SHA_1 as defined in http://oauth.net/core/1.0a/#signing_process and that value will be oauth_signature
+
+
+Sample HTTP Authorization Header: 
+
+Header Name: Authorization 
+Header Value: OAuth realm="",oauth_signature="FjoSQaFDKEDK1FJazlY3xArNflk%3D",oauth_nonce="LTg2ODUzOTQ5MTEzMTY3MzQwMzE%3D",oauth_signature_method="HMAC-SHA1",oauth_consumer_key="282683cc9e4b8fc81dea6bc687d46758",oauth_token="%2KMqRgRCGGPo7Xdk6G8QDSEzX0Jsy6sKNcULcDavAGgZ%3D",oauth_timestamp="1273254425"
+
+Sample HTTP reqid Header: 
+
+Header Name: reqid 
+Header Value: oauth_consumer_key 
+
+Sample AccountList Response: 
+
+[AccountListResponse]
+[Account] 
+[accountDesc]CONTRIBUTORY[/accountDesc] 
+[accounted]XXXXXXX[/accounted] 
+[marginLevel]CASH[/marginLevel] 
+[netAccountValue]0.00[/netAccountValue]
+[registrationType]IRA[/registrationType] 
+[/Account]
+
+[Account] 
+[accountDesc]INDIVIDUAL[/accountDesc] 
+[accounted]YYYYYYY[/accounted]
+[marginLevel]MARGIN[/marginLevel] 
+[netAccountValue]-10.69[/netAccountValue] 
+[registrationType]INDIVIDUAL[/registrationType] 
+[/Account] 
+[Account] 
+[accountDesc]INDIVIDUAL[/accountDesc] 
+[accounted]ZZZZZZZ[/accounted] 
+[marginLevel]MARGIN[/marginLevel] 
+[netAccountValue]-3.78[/netAccountValue]
+[RegistrationType]INDIVIDUAL[/registrationType] 
+[Account]
+[Account]
+[accountDesc]ROTHIRA[/accountDesc] 
+[accounted]AAAAAAA[/accounted] 
+[marginLevel]CASH[/marginLevel] 
+[netAccountValue]0.00[/netAccountValue] 
+[registrationType]IRA[/registrationType] 
+[/Account] 
+[Account] 
+[accountDesc]CONVERSION ROTH IRA[/accountDesc] 
+[accounted]BBBBBB[/accounted] 
+[marginLevel]CASH[/marginLevel] 
+[netAccountValue]0.00[/netAccountValue] 
+[registrationType]IRA[/registrationType]
+[/Account]
+[Account] 
+[accountDesc]SIMPLE IRA[/accountDesc] 
+[accounted]KKKKKKK[/accounted] 
+[marginLevel]CASH[/marginLevel] 
+[netAccountValue]-7.74[/netAccountValue] 
+[registrationType>IRA[/registrationType] 
+[/Account] 
+[Account]
+[accountDesc]SIMPLE IRA[/accountDesc]
+[accounted]IIIIIIIIIIII[/accounted] 
+[marginLevel]CASH[/marginLevel] 
+[netAccountValue]-10.53[/netAccountValue]
+[registrationType]IRA[/registrationType] 
+[/Account] 
+[/AccountListResponse]
+
+Sincerely,
+
+Shawn Sniff
+9:30 a.m. to 6:30 p.m. (M-F) ET
+1-800-ETRADE-1 (1-800-387-2331)
+Sr. Financial Service Representative
+E*TRADE Securities, LLC

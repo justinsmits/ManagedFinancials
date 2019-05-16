@@ -1,0 +1,48 @@
+Hosting Package: Web Hosting (21)
+Domain: schlombo.com
+Username: schlombo
+Password: 06Smarog!
+
+Server Information
+
+Nameserver 1: DNS7.RELIABLESITE.NET
+Nameserver 1 IP: 208.68.171.100
+Nameserver 2: DNS8.RELIABLESITE.NET 
+Nameserver 2 IP: 208.68.171.101 
+Nameserver 3: 
+Nameserver 3 IP: 
+
+Hosted Domains: 1 Domain 
+Disk Space: 1,000 MB 
+Bandwidth: 100 GB 
+Dedicated IP: Shared IP Address 
+Microsoft SQL Server 2005 Databases: 1 Database 
+Microsoft SQL Server 2008 Databases: 1 Database 
+MySQL 5 Databases: 1 Database 
+Sub-Domains: 1 Sub Domain 
+E-mail Inboxes/Addresses: 5 Inboxes + 5 Free Forwarders 
+
+
+Control Panel Access
+
+Control Panel URL: http://dnp.reliablesite.net 
+Once your domain has propogated, you may also use http://cp.schlombo.com/
+
+Uploading Your Website
+
+Once your domain has propagated you may use the details below:
+
+FTP Hostname: ftp.schlombo.com
+Webpage URL: http://www.schlombo.com
+
+Email Settings
+
+For email accounts that you setup, you should use the following connection details in your email program:
+
+POP3 Host Address: mail.schlombo.com
+IMAP4 Host Address: mail.schlombo.com
+SMTP Host Address: mail.schlombo.com
+Username: The email address you are checking email for
+Password: As specified in your control panel
+
+Webmail: mail.schlombo.com or mail.reliablesite.net

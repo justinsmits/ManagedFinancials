@@ -1,0 +1,18 @@
+
+Create DAL
+Create user DAl/domain/service components
+create user create page
+create login control
+verify logged in security
+NDA
+
+Create a company close to release
+
+brick house LLC
+
+
+Long term plan
+	beta launch Jan 1st
+		Free user use for around 300 people at least
+	projected launch april 1st
+

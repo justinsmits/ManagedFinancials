@@ -1,0 +1,22 @@
+yesterdays User rating system
+
+	Gains vs Dow 
+	- number of trades to attain gain
+	followers gain  - this is for future, must be cached
+	User Risk
+	Cannot show trades for market caps under a certain limit
+	user searching features
+		Popularity
+		Overall Gain
+		Trends - gaining popularity amongst crowd
+		
+	
+social aspect
+	Give Top investors prizes (plus the commision per following user) Give them a gOAL
+
+
+user communication methods
+	email
+	text messaging
+	social media - future
+

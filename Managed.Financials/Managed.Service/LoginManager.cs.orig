@@ -1,0 +1,28 @@
+﻿using System;
+using Managed.Data;
+
+namespace Managed.Service
+{
+	public class LoginManager
+	{
+
+<<<<<<< local
+            using (myContext.GetConnection(true))
+            {             
+                myContext.BeginTransaction();
+                try
+                {
+                    objManager.CreateObject(myContext);
+                    myContext.CommitTransaction();
+                }
+                catch (Exception)
+                {
+                    myContext.RollbackTransaction();
+                }   
+            }
+    
+				}
+=======
+>>>>>>> other
+	}
+}

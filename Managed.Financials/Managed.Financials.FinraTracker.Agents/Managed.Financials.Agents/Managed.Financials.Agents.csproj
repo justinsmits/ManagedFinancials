@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC2639A7-2B4A-4851-B7F9-5BD4E526F7AF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Managed.Financials.Agents</RootNamespace>
+    <AssemblyName>Managed.Financials.Agents</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\..\Program Files (x86)\MongoDB\CSharpDriver 1.9.2\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\..\Program Files (x86)\MongoDB\CSharpDriver 1.9.2\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgentBase.cs" />
+    <Compile Include="AgentManager.cs" />
+    <Compile Include="AgentStartContext.cs" />
+    <Compile Include="CleanerAgent.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="FileDownloader.cs" />
+    <Compile Include="FileProcessor.cs" />
+    <Compile Include="ProcessingAgent.cs" />
+    <Compile Include="IFileDownloader.cs" />
+    <Compile Include="IFileProcessor.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartAgent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BrickHouse\BrickHouse.Utility\BrickHouse.Utility.csproj">
+      <Project>{03d81287-64de-4b3c-9417-6fefae707d0f}</Project>
+      <Name>BrickHouse.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BrickHouse.DBTools\BrickHouse.DBTools.csproj">
+      <Project>{48a6b9de-8ba1-421f-8ef5-b83f12577645}</Project>
+      <Name>BrickHouse.DBTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managed.Financials.API\Managed.Financials.API.csproj">
+      <Project>{712f3587-d906-4c8e-9353-56af7849cf52}</Project>
+      <Name>Managed.Financials.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managed.Financials.DataContracts\Managed.Financials.DataContracts.csproj">
+      <Project>{bb51a6ee-f290-4cde-8d59-c9a5aefb7e07}</Project>
+      <Name>Managed.Financials.DataContracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
